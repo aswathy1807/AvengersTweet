@@ -17,6 +17,8 @@ export default function PostCard({post}:{post:Post}){
             <Image
             src={post.author.avatar}
             alt={post.author.displayName}
+            width={40}
+            height={40}
             className="h-10 w-10 rounded-full bg-gray-200 shrink-0"
             />
             <div className="flex-1 min-w-0">

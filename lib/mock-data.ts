@@ -4,7 +4,7 @@ const tony: Author={
     id:"tony",
     type:"character",
     displayName:"Tony Stark",
-    username:"@IronMan",
+    username:"IronMan",
     avatar:"/avatars/tony.jpg"
 };
 
@@ -12,7 +12,7 @@ const steve:Author={
     id:"steve",
     type:"character",
     displayName:"Steve Rogers",
-    username:"@CapAmerica",
+    username:"CapAmerica",
     avatar:"/avatars/steve.jpg"
 };
 
@@ -20,7 +20,7 @@ const user:Author={
     id:"user-1",
     type:"user",
     displayName:"Violet",
-    username:"@Violet",
+    username:"Violet",
     avatar:"/avatars/user.jpg"
 };
 

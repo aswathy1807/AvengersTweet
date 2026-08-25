@@ -16,6 +16,8 @@ export default function ComposeBox(){
                 <Image
                 src="/avatars/user.jpg"
                 alt="You"
+                width={40}
+                height={40}
                 className="h-10 w-10 rounded-full bg-gray-200 shrink-0"/>
 
                <div className="flex-1">
