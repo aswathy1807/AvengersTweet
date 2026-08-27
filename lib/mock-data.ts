@@ -57,3 +57,67 @@ export const mockPosts:Post[]=[
     },
   
 ];
+
+export interface CharacterProfile extends Author{
+    bio:string;
+    followersCount:number;
+    followingCount:number;
+}
+
+export const mockCharacters:CharacterProfile[]=[
+    {
+        ...tony,
+        bio:"Genius, billionaire, playboy, philanthropist. CEO,Stark Industries.",
+        followersCount:2400000,
+        followingCount:12,
+    },
+
+    {
+        ...steve,
+        bio:"I can do this all day. Captain America, First Avenger.",
+        followersCount:1800000,
+        followingCount:8,
+    },
+
+];
+
+export const mockReply:Post={
+    id:"2-reply-1",
+    author:tony,
+    content:"cute speech. Who's paying for the shield upgrades though?",
+    createdAt:new Date(Date.now()-1000*60*20).toISOString(),
+    replyCount:0,
+    likeCount:10,
+    repostCount:1,
+    parentId:"2",
+};
+
+export interface MockNotification{
+    id:string;
+    type:"reply"|"like";
+    actor:Author;
+    postPreview:string;
+    createdAt:string;
+    read:boolean;
+}
+
+export const mockNotifications:MockNotification[]=[
+    {
+        id:"n1",
+        type:"reply",
+        actor:tony,
+        postPreview:"cute speech. Who's paying for the shield upgrades though?",
+        createdAt:new Date(Date.now()-1000*60*20).toISOString(),
+        read:false,
+
+    },
+
+    {
+        id:"n2",
+        type:"like",
+        actor:steve,
+        postPreview:"whos winning, thor or a very large storm",
+        createdAt:new Date(Date.now()-1000*60*45).toISOString(),
+        read:true,
+    },
+];
