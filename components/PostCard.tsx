@@ -1,5 +1,6 @@
 import {Post} from "@/types";
 import Image from "next/image";
+import Link from "next/link";
 
 function timeAgo(iso:string):string{
     const diffMs=Date.now()-new Date(iso).getTime();
@@ -28,9 +29,10 @@ export default function PostCard({post}:{post:Post}){
                 <span className="text-gray-400">·</span>
                 <span className="text-gray-500">{timeAgo(post.createdAt)}</span>
             </div>
-
+            
+            <Link href={`/post/${post.id}`} className="block">
             <p className="mt-1 text-gray-900 whitespace-pre-wrap wrap-break-word">{post.content}</p>
-
+            </Link>
             <div className="mt-3 flex gap-8 text-gray-500 text-sm max-w-xs">
                 <button className="flex items-center gap-1 hover:text-blue-500">
                     💬<span>{post.replyCount}</span>
