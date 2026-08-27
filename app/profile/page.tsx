@@ -15,12 +15,14 @@ export default function UserProfilePage() {
 
       <div className="px-4 pt-3 pb-4 border-b border-gray-200">
         <Image
-          src="/avatars/user.png"
+          src="/avatars/user.jpg"
           alt="You"
+          width={80}
+          height={80}
           className="h-20 w-20 rounded-full border-4 border-white -mt-14 bg-gray-300"
         />
-        <h1 className="mt-2 text-xl font-bold">You</h1>
-        <p className="text-gray-500">@you</p>
+        <h1 className="mt-2 text-xl font-bold">Vi</h1>
+        <p className="text-gray-500">@violet</p>
       </div>
 
       <div>

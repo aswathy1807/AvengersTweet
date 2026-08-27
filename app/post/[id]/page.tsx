@@ -2,8 +2,9 @@ import PostCard from "@/components/PostCard";
 import { mockPosts, mockReply } from "@/lib/mock-data";
 import { notFound } from "next/navigation";
 
-export default function ThreadPage({ params }: { params: { id: string } }) {
-  const post = mockPosts.find((p) => p.id === params.id);
+export default async function ThreadPage({ params }: { params: Promise<{ id: string }>; }) {
+    const{id}=await params;
+  const post = mockPosts.find((p) => p.id === id);
   if (!post) return notFound();
 
   const replies = [mockReply].filter((r) => r.parentId === post.id);
