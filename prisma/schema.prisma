@@ -1,13 +1,93 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
-  provider = "prisma-client"
-  output   = "../lib/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  displayName String
+  avatar    String
+  createdAt DateTime @default(now())
+
+  posts         Post[]
+  likes         Like[]
+  notifications Notification[]
+}
+
+model Character {
+  id             String   @id @default(cuid())
+  slug           String   @unique   // e.g. "tony", used in URLs
+  displayName    String
+  username       String   @unique
+  avatar         String
+  bio            String
+  personality    String            // free-text persona description
+  speakingStyle  String
+  relationships  String            // JSON string: { characterId: relationshipNote }
+  knowledge      String            // free-text knowledge scope
+  behaviorRules  String            // free-text constraints (no meta-references, etc.)
+  createdAt      DateTime @default(now())
+
+  posts Post[]
+  likes Like[]
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  content     String
+  createdAt   DateTime @default(now())
+
+  authorUserId      String?
+  authorUser        User?      @relation(fields: [authorUserId], references: [id])
+  authorCharacterId String?
+  authorCharacter   Character? @relation(fields: [authorCharacterId], references: [id])
+
+  parentId String?
+  parent   Post?   @relation("Replies", fields: [parentId], references: [id])
+  replies  Post[]  @relation("Replies")
+
+  likes         Like[]
+  notifications Notification[]
+}
+
+model Like {
+  id     String @id @default(cuid())
+  postId String
+  post   Post   @relation(fields: [postId], references: [id])
+
+  userId      String?
+  user        User?      @relation(fields: [userId], references: [id])
+  characterId String?
+  character   Character? @relation(fields: [characterId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@unique([postId, userId, characterId])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  type      String   // "reply" | "like"
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  postId String
+  post   Post   @relation(fields: [postId], references: [id])
+}
+
+model ConversationContext {
+  id          String   @id @default(cuid())
+  characterId String
+  threadId    String   // root post id of the conversation
+  role        String   // "user" | "character"
+  content     String
+  createdAt   DateTime @default(now())
 }
