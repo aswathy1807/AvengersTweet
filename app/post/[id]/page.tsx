@@ -1,13 +1,33 @@
 import PostCard from "@/components/PostCard";
-import { mockPosts, mockReply } from "@/lib/mock-data";
+import { prisma } from "@/lib/prisma";
+import { mapDbPost } from "@/lib/map-posts";
 import { notFound } from "next/navigation";
 
-export default async function ThreadPage({ params }: { params: Promise<{ id: string }>; }) {
-    const{id}=await params;
-  const post = mockPosts.find((p) => p.id === id);
-  if (!post) return notFound();
+export const dynamic = "force-dynamic";
 
-  const replies = [mockReply].filter((r) => r.parentId === post.id);
+export default async function ThreadPage({ params }: { params: Promise<{ id: string }>; }) {
+  const {id}=await params;
+  const row = await prisma.post.findUnique({
+    where: { id: id },
+    include: {
+      authorUser: true,
+      authorCharacter: true,
+      _count: { select: { replies: true, likes: true } },
+      replies: {
+        include: {
+          authorUser: true,
+          authorCharacter: true,
+          _count: { select: { replies: true, likes: true } },
+        },
+        orderBy: { createdAt: "asc" },
+      },
+    },
+  });
+
+  if (!row) return notFound();
+
+  const post = mapDbPost(row);
+  const replies = row.replies.map(mapDbPost);
 
   return (
     <div>
