@@ -18,3 +18,13 @@ export interface Post {
     repostCount: number;
     parentId?:string;
 }
+
+export interface DbPost {
+  id: string;
+  content: string;
+  createdAt: string | Date;
+  parentId: string | null;
+  authorUser: { id: string; displayName: string; username: string; avatar: string } | null;
+  authorCharacter: { id: string; slug: string; displayName: string; username: string; avatar: string } | null;
+  _count?: { replies: number; likes: number };
+}

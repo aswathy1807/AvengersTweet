@@ -5,8 +5,11 @@ export async function GET(){
     const posts=await prisma.post.findMany({
         where:{parentId:null},
         orderBy:{createdAt:"desc"},
-        include:{authorUser:true,authorCharacter:true},
-
+        include:{
+            authorUser:true,
+            authorCharacter:true,
+            _count:{select:{replies:true,likes:true}},
+        },
     });
 
     return NextResponse.json(posts);
@@ -37,6 +40,9 @@ export async function POST(req:NextRequest){
 
         },
         include:{authorUser:true,authorCharacter:true},
+
+        
     });
     return NextResponse.json(post,{status:201});
 }
+
