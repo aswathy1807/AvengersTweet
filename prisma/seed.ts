@@ -1,15 +1,24 @@
-import { PrismaClient } from "@prisma/client/extension";
+import "dotenv/config";
+import { PrismaClient } from "../generated/prisma/client";
+import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 
-const prisma = new PrismaClient();
+const adapter = new PrismaBetterSqlite3({
+  url: process.env.DATABASE_URL!,
+});
+
+const prisma = new PrismaClient({ adapter });
 
 async function main() {
   await prisma.user.upsert({
-    where: { username: "you" },
-    update: {},
+    where: { username: "violet" },
+    update: { 
+      displayName: "Violet",
+      avatar: "/avatars/user.jpg",
+    },
     create: {
-      username: "you",
-      displayName: "You",
-      avatar: "/avatars/user.png",
+      username: "violet",
+      displayName: "Violet",
+      avatar: "/avatars/user.jpg",
     },
   });
 

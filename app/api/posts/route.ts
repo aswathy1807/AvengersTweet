@@ -27,7 +27,7 @@ export async function POST(req:NextRequest){
 
     }
 
-    const user=await prisma.user.findUnique({where:{username:"you"}});
+    const user=await prisma.user.findUnique({where:{username:"violet"}});
     if(!user){
         return NextResponse.json({error:"seeded user not found- did you run prisma db seed?"},{status:500});
     }
