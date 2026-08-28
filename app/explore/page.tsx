@@ -1,5 +1,5 @@
-import { mockCharacters } from "@/lib/mock-data";
 import Image from "next/image";
+import {prisma} from "@/lib/prisma"
 
 const trending=[
     {topic: "#SuitUpgrade",postCount:1204},
@@ -7,8 +7,10 @@ const trending=[
     {topic: "#AvengersAssemble",postCount:3201},
 
 ];
+export const dynamic = "force-dynamic";
 
-export default function ExplorePage(){
+export default async function ExplorePage(){
+    const characters=await prisma.character.findMany({orderBy: {displayName:"asc"}});
     return(
         <div>
             <header className="sticky top-0 bg-white/80 backdrop-blur border-b border-gray-200 px-4 py-3">
@@ -30,7 +32,7 @@ export default function ExplorePage(){
             ))}
 
             <div className="px-4 py-3 border-b border-gray-200 font-bold">Characters</div>
-            {mockCharacters.map((c)=>(
+            {characters.map((c)=>(
                 <div key={c.id} className="flex items-center gap-3 px-4 py-3 border-b border-gray-200 hover:bg-gray-50">
                    <Image
                    src={c.avatar} 
@@ -48,4 +50,5 @@ export default function ExplorePage(){
             ))}
         </div>
     );
+
 }
