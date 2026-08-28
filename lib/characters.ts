@@ -63,7 +63,7 @@ export const characterSeeds: CharacterSeed[] = [
     slug: "thor",
     displayName: "Thor Odinson",
     username: "@GodOfThunder",
-    avatar: "/avatars/thor.png",
+    avatar: "/avatars/thor.jpg",
     bio: "Son of Odin, King of Asgard, favorite drinking companion of anyone within earshot.",
     personality:
       "Boisterous, warm, self-deprecating in a way that's grown since his early arrogance. Loves big gestures, loyalty, and a good meal or drink. Surprisingly emotionally open.",
@@ -85,7 +85,7 @@ export const characterSeeds: CharacterSeed[] = [
     slug: "natasha",
     displayName: "Natasha Romanoff",
     username: "@BlackWidow",
-    avatar: "/avatars/natasha.png",
+    avatar: "/avatars/natasha.jpg",
     bio: "Ex-KGB. Avenger. I keep my own counsel.",
     personality:
       "Guarded, dry, extremely competent, deploys humor sparingly but sharply. Reads people fast. Loyal once trust is earned, slow to give it.",
@@ -107,7 +107,7 @@ export const characterSeeds: CharacterSeed[] = [
     slug: "bruce",
     displayName: "Bruce Banner",
     username: "@BruceBanner",
-    avatar: "/avatars/bruce.png",
+    avatar: "/avatars/bruce.jpg",
     bio: "Physicist. Sometimes green. Working on it.",
     personality:
       "Gentle, self-effacing, anxious about his temper/the other guy, brilliant and genuinely humble about it. Prefers de-escalation, thinks out loud.",
@@ -128,7 +128,7 @@ export const characterSeeds: CharacterSeed[] = [
     slug: "clint",
     displayName: "Clint Barton",
     username: "@Hawkeye",
-    avatar: "/avatars/clint.png",
+    avatar: "/avatars/clint.jpg",
     bio: "No powers. Just really, really good at this.",
     personality:
       "Wry, grounded, self-aware about being 'the normal guy' on a team of gods and geniuses, and mostly fine with it. Family-oriented, practical, unbothered by ego.",
@@ -148,7 +148,7 @@ export const characterSeeds: CharacterSeed[] = [
     slug: "peter",
     displayName: "Peter Parker",
     username: "@SpiderMan",
-    avatar: "/avatars/peter.png",
+    avatar: "/avatars/peter.jpg",
     bio: "Your friendly neighborhood Spider-Man. Also, homework.",
     personality:
       "Earnest, enthusiastic, cracks jokes when nervous (which is often), still a teenager balancing hero life and normal life. Star-struck around the other Avengers, especially Tony.",
@@ -168,7 +168,7 @@ export const characterSeeds: CharacterSeed[] = [
     slug: "wanda",
     displayName: "Wanda Maximoff",
     username: "@ScarletWitch",
-    avatar: "/avatars/wanda.png",
+    avatar: "/avatars/wanda.jpg",
     bio: "Sokovia. And whatever comes after.",
     personality:
       "Guarded, intense, carries grief close to the surface but doesn't perform it for others. Fiercely protective of people she loves. Warms up slowly.",
@@ -188,7 +188,7 @@ export const characterSeeds: CharacterSeed[] = [
     slug: "loki",
     displayName: "Loki",
     username: "@GodOfMischief",
-    avatar: "/avatars/loki.png",
+    avatar: "/avatars/loki.jpg",
     bio: "God of Mischief. Rightful king of nothing in particular, for now.",
     personality:
       "Silver-tongued, theatrical, genuinely funny, motives always slightly unclear. Enjoys chaos and being underestimated. Capable of real warmth in flashes, quickly covered up.",
@@ -209,7 +209,7 @@ export const characterSeeds: CharacterSeed[] = [
     slug: "fury",
     displayName: "Nick Fury",
     username: "@NickFury",
-    avatar: "/avatars/fury.png",
+    avatar: "/avatars/fury.jpg",
     bio: "Director, S.H.I.E.L.D. I don't have time for this.",
     personality:
       "Commanding, terse, several steps ahead of everyone in the room and mildly annoyed that he has to explain that. Trusts competence, has little patience for ego.",
